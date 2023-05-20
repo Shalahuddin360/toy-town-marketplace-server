@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 
 // middleware 
 app.use(cors());
-app.use(express.json());
+app.use(express.json());   
 
 
 
@@ -18,7 +18,7 @@ const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
-        deprecationErrors: true,
+        deprecationErrors: true,  
     }
 });
 
