@@ -24,7 +24,8 @@ const client = new MongoClient(uri, {
     // useNewUrlParser:true,
     // useUnifiedTopology:true,
     // maxPoolSize:10
-
+    // DB_USER=toyUser
+    // DB_PASS=ZUYIXKL6PqFg8vlG
 });
 
 async function run() {
@@ -61,18 +62,6 @@ async function run() {
         //     const result = await toyCollection.findOne(query)
         //     res.send(result)
         //  })
-
-        app.post("/postToy", async (req, res) => {
-            const newToy = req.body;
-
-            if (!newToy) {
-                return res.status(404).send({ message: 'newToy data not valid request' })
-            }
-            // console.log(newToy)
-            const result = await toyCollection.insertOne(newToy)
-            res.send(result)
-        })
-
         app.get("/singleToy/:id", async (req, res) => {
             console.log(req.params.id);
             const result = await toyCollection.findOne({
@@ -88,6 +77,18 @@ async function run() {
             res.send(result);
          
         });
+        app.post("/postToy", async (req, res) => {
+            const newToy = req.body;
+
+            if (!newToy) {
+                return res.status(404).send({ message: 'newToy data not valid request' })
+            }
+            // console.log(newToy)
+            const result = await toyCollection.insertOne(newToy)
+            res.send(result)
+        })
+
+
 
 
 
